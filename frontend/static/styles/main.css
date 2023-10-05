@@ -1,0 +1,92 @@
+img{
+    width: 100%;
+}
+
+/* Estilo para el encabezado de la universidad */
+.university-header{
+    background-color: #b3142c; /* Color de fondo de la universidad */
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    width: 100%;
+}
+
+/* Estilo para el navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilo para el logo */
+.logo a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Estilo para los enlaces de navegación */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li:last-child {
+    margin-right: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff; /* Cambia el color al pasar el mouse sobre el enlace */
+}
+
+.logo img{
+    width: 150px;
+}
+
+/* Reset de estilos para el body y el footer */
+body, footer {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilos para la información de contacto */
+.contacto {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contacto h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contacto p {
+    font-size: 16px;
+    margin: 5px 0;
+}
