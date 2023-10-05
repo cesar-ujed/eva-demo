@@ -90,3 +90,9 @@ footer {
     font-size: 16px;
     margin: 5px 0;
 }
+
+.content-grid{
+    display: grid;
+    justify-items: center;
+    text-align: center;
+}

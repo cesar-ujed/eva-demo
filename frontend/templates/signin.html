@@ -1,0 +1,15 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="content-grid">
+    <h1>Acceso a la plataforma</h1><br><br>
+    <form class="form-login" action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Iniciar sesión</button>
+    </form>
+    {{ error }}
+</div>
+
+{% endblock %}
