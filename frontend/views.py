@@ -1,8 +1,11 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm 
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from api.models import Recomendacion
+
+from frontend.forms import RecomendacionForm
 
 # Create your views here.
 def index(request):
@@ -62,4 +65,30 @@ def endsession(request):
 
 
 def bandeja(request):
-    return render(request, 'recomendaciones.html')
+    recomendaciones = Recomendacion.objects.all()
+    return render(request, 'recomendaciones.html', {
+        'recomendaciones': recomendaciones
+    })
+
+
+def crear_reco(request):
+    if request.method == 'POST':
+        form = RecomendacionForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('bandeja')   
+
+    else:
+        form = RecomendacionForm()
+        return render(request, 'crear.html', {
+        'form': form
+    }) 
+
+
+def detail(request, pk):
+    recomendacion = get_object_or_404(Recomendacion, pk=pk)
+    # print(pk)
+    return render(request, 'detalle.html', {
+        'recomendacion': recomendacion
+    })

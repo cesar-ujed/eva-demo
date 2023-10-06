@@ -2,6 +2,32 @@
 {% load static %}
 {% block content %}
 
-<h1>Recomendaciones</h1>
+<div class="container">
+    <div>
+        <h1>Bandeja de recomendaciones</h1>
+    </div>
+    <div>
+        <a href="{% url 'crear' %}">Nueva recomendacion</a>
+    </div>
+
+    {% for recomendacion in recomendaciones %}
+    <div>
+      <div class="card" style="width: 18rem;">
+          <div class="card-header" style="font-weight: bold;">
+            No. {{ recomendacion.numero_rec }}
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Recomendacion: {{ recomendacion.recomendacion }}</li>
+            <li class="list-group-item">Plazo: {{ recomendacion.plazo_cumplimiento|date:"Y-m-d" }}</li>
+            <li class="list-group-item">Responsable: {{ recomendacion.responsable }}</li>
+            <a href="{% url 'detail' pk=recomendacion.pk %}">Ver Detalle</a>
+          </ul>
+      </div>
+    </div>
+      {% endfor %}
+
+</div>
+
 
 {% endblock %}
+

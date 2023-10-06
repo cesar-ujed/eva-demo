@@ -7,4 +7,6 @@ urlpatterns = [
     path('login/',      views.startsession,     name='login'),
     path('logout/',     views.endsession,       name="logout"),
     path('bandeja/',    views.bandeja,          name='bandeja'),
+    path('crear/',      views.crear_reco,       name='crear'),
+    path('bandeja/detalle/<int:pk>/', views.detail, name='detail')
 ]

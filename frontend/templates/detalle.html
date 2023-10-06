@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="card" style="width: 40rem;">
+        <div class="card-header" style="font-weight: bold; background-color: dimgrey;">
+          NO. {{ recomendacion.numero_rec }}
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Recomendacion: </label> {{ recomendacion.recomendacion }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Meta: </label> {{ recomendacion.meta }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo: </label> {{ recomendacion.plazo_cumplimiento|date:"Y-m-d" }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Indicador: </label> {{ recomendacion.indicador_validacion }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Acciones</label> {{ recomendacion.acciones_meta }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Recursos: </label> {{ recomendacion.recursos }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable: </label> {{ recomendacion.responsable }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Categoria: </label> {{ recomendacion.categoria }}</li>
+        </ul>
+      </div>
+</div>
+
+{% endblock %}
