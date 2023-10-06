@@ -1,3 +1,4 @@
+from django.http import FileResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm 
 from django.contrib.auth.models import User
@@ -92,3 +93,9 @@ def detail(request, pk):
     return render(request, 'detalle.html', {
         'recomendacion': recomendacion
     })
+
+
+def obtener_pdf(request, pdf_id):
+    pdf = get_object_or_404(Recomendacion, pk = pdf_id)
+    response = FileResponse(pdf.archivo, content_type='application/pdf')
+    return response
