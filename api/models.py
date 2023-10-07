@@ -53,4 +53,4 @@ class Recomendacion(models.Model):
     observacion     = models.TextField(null=True)
     
     def __str__(self):
-        return self.recomendacion
+        return self.recomendacion, self.categoria

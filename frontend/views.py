@@ -5,8 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from api.models import Recomendacion
-
 from frontend.forms import RecomendacionForm
+from django.views.generic import ListView
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -99,3 +100,19 @@ def obtener_pdf(request, pdf_id):
     pdf = get_object_or_404(Recomendacion, pk = pdf_id)
     response = FileResponse(pdf.archivo, content_type='application/pdf')
     return response
+
+
+class BusquedaView(ListView):
+    model = Recomendacion
+    template_name = 'search.html'  # Nombre de tu plantilla HTML
+    context_object_name = 'resultados'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Recomendacion.objects.filter(
+                categoria__nombre_cat__icontains=query
+                # Q(numero_rec__icontains=query) | Q(categoria__icontains=query)
+            )
+        else:
+            return Recomendacion.objects.all()

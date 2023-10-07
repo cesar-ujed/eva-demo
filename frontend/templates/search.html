@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h1>Resultado de Búsqueda</h1>
+    
+    <form method="GET">
+        <input type="text" name="q" placeholder="Buscar">
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+
+<div class="container">
+    <div id="" class="tabcontent">
+        <section class="section mb-16">
+            <div class="fluid-container">
+                <div class="tabs__panel" >
+                    <div class="row">
+                        {% for resultado in resultados %}
+                        <div class="card" style="width: 18rem; margin: 2em;">
+                            <div class="card-header" style="font-weight: bold;">
+                              No. {{ resultado.numero_rec }}
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item"><label for="" style="font-weight: bold;">Recomendacion:</label> {{ resultado.recomendacion }}</li>
+                              <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo:</label> {{ resultado.plazo_cumplimiento|date:"Y-m-d" }}</li>
+                              <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable:</label> {{ resultado.responsable }}</li>
+                              <li class="list-group-item"><a href="{% url 'detail' pk=resultado.pk %}">Detalle</a></li>
+                            </ul>
+                          </div>
+                        {% endfor %}                     
+                    </div>
+              </div>  
+          </div>  
+      </section>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
