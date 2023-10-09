@@ -57,7 +57,7 @@ def startsession(request):
             })
         else:
             login(request, user)
-            return redirect('bandeja')
+            return redirect('buscar')
         
 
 @login_required
@@ -116,3 +116,9 @@ class BusquedaView(ListView):
             )
         else:
             return Recomendacion.objects.all()
+        
+
+def salirView(request):
+    return render(request, 'salirPage.html', {
+        'msg': 'Estas seguro de salir?'
+    })

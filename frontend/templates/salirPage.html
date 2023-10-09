@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-sm">
+    <br><br>
+    <div class="card" style="width: 40rem;">
+        <div class="card-header">
+          Cerrar sesión
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ msg }}</h5>
+          <a href="{% url 'logout' %}" class="btn btn-danger">Salir</a>
+          <a href="{% url 'buscar' %}" class="btn btn-primary">Cancelar</a>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
