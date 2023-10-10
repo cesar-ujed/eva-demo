@@ -9,7 +9,7 @@
     <br>
     <form method="post">
         {% csrf_token %}
-        <label for="nuevo_observacion">Observacion:</label>
+        <label for="nuevo_observacion">Observación:</label>
         <div class="mb-3">
             <textarea class="form-control" id="observacion" name="observacion" value="{{ recomendacion.observacion }}" rows="3">{{ recomendacion.observacion }}</textarea>
         </div>

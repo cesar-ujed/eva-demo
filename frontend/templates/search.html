@@ -6,7 +6,7 @@
 <div class="container">
     <div class="grid-content-reco">
         <div>
-            <h1>Bandeja recomendaciones</h1>
+            <h1>Bandeja de recomendaciones</h1>
         </div>
     </div>
     <div class="grid-content-search" style="display: grid; justify-items: right;">
@@ -29,7 +29,7 @@
                               No. {{ resultado.numero_rec }}
                             </div>
                             <ul class="list-group list-group-flush">
-                              <li class="list-group-item"><label for="" style="font-weight: bold;">Recomendacion:</label> {{ resultado.recomendacion|slice:":70" }}</li>
+                              <li class="list-group-item"><label for="" style="font-weight: bold;">Recomendación:</label> {{ resultado.recomendacion|slice:":70" }}</li>
                               <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo:</label> {{ resultado.plazo_cumplimiento|date:"Y-m-d" }}</li>
                               <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable:</label> {{ resultado.responsable }}</li>
                               <li class="list-group-item"><a href="{% url 'detail' pk=resultado.pk %}">Detalle</a></li>

@@ -4,7 +4,7 @@
 <br>
 <br>
 <div class="container">
-  <a href="{% url 'buscar' %}">🢨 Atras</a>
+  <a href="{% url 'buscar' %}">🢨 Atrás</a>
 </div>
 <br>
 <div class="container">
@@ -13,17 +13,17 @@
           NO. {{ recomendacion.numero_rec }}
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><label for="" style="font-weight: bold;">Recomendacion: </label> {{ recomendacion.recomendacion }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Recomendación: </label> {{ recomendacion.recomendacion }}</li>
           <li class="list-group-item"><label for="" style="font-weight: bold;">Meta: </label> {{ recomendacion.meta }}</li>
           <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo: </label> {{ recomendacion.plazo_cumplimiento|date:"Y-m-d" }}</li>
           <li class="list-group-item"><label for="" style="font-weight: bold;">Indicador: </label> {{ recomendacion.indicador_validacion }}</li>
           <li class="list-group-item"><label for="" style="font-weight: bold;">Acciones</label> {{ recomendacion.acciones_meta }}</li>
           <li class="list-group-item"><label for="" style="font-weight: bold;">Recursos: </label> {{ recomendacion.recursos }}</li>
           <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable: </label> {{ recomendacion.responsable }}</li>
-          <li class="list-group-item"><label for="" style="font-weight: bold;">Categoria: </label> {{ recomendacion.categoria }}</li>
-          <li class="list-group-item"><label for="" style="font-weight: bold;">Observacion: </label> {{ recomendacion.observacion }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Categoría: </label> {{ recomendacion.categoria }}</li>
+          <li class="list-group-item"><label for="" style="font-weight: bold;">Observación: </label> {{ recomendacion.observacion }}</li>
           <li class="list-group-item"><a class="card-link" href="{{ recomendacion.archivo.url }}" target="_blank">Ver Evidencia</a></li>  
-          <li class="list-group-item"><a href="{% url 'observacion' pk=recomendacion.pk %}">Agregar o editar observacion</a></li>  
+          <li class="list-group-item"><a href="{% url 'observacion' pk=recomendacion.pk %}">Agregar o editar observación</a></li>  
         </ul>
       </div>
 </div>
