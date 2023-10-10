@@ -100,3 +100,13 @@ footer {
 label {
     font-weight: bold;
 }
+
+.grid-content-reco{
+    display: grid;
+    justify-items: left;
+}
+
+.grid-content-search{
+    display: grid;
+    justify-items: right;
+}
