@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<br>
+<div class="container">
+    <h1>Editar o agregar</h1>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nuevo_observacion">Observacion:</label>
+        <div class="mb-3">
+            <textarea class="form-control" id="observacion" name="observacion" value="{{ recomendacion.observacion }}" rows="3">{{ recomendacion.observacion }}</textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+    </form>
+</div>
+
+{% endblock %}

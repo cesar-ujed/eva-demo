@@ -122,3 +122,19 @@ def salirView(request):
     return render(request, 'salirPage.html', {
         'msg': 'Estas seguro de salir?'
     })
+
+
+def actualizar(request, pk):
+    recomendacion = get_object_or_404(Recomendacion, pk=pk)
+    #print(pk)
+
+    if request.method == 'POST':
+        observacion = request.POST.get('observacion')
+        recomendacion.observacion = observacion
+        recomendacion.save()
+        return redirect('detail', pk)
+    else:
+        return render(request, 'observacion.html', {
+            'recomendacion': recomendacion
+        })
+    

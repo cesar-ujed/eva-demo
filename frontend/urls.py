@@ -15,6 +15,7 @@ urlpatterns = [
     path('obtener_pdf/<int:pdf_id>/', views.obtener_pdf,    name='obtener_pdf'),
     path('buscar/',     BusquedaView.as_view(), name='buscar'),
     path('salir/', views.salirView, name='salir'),
+    path('bandeja/detalle/<int:pk>/actualizar/', views.actualizar, name='observacion'),
 ]
 
 if settings.DEBUG:
