@@ -66,11 +66,11 @@ def endsession(request):
     return redirect('index')
 
 
-def bandeja(request):
-    recomendaciones = Recomendacion.objects.all()
-    return render(request, 'recomendaciones.html', {
-        'recomendaciones': recomendaciones
-    })
+# def bandeja(request):
+#     recomendaciones = Recomendacion.objects.all()
+#     return render(request, 'recomendaciones.html', {
+#         'recomendaciones': recomendaciones
+#     })
 
 
 def crear_reco(request):
@@ -79,7 +79,7 @@ def crear_reco(request):
 
         if form.is_valid():
             form.save()
-            return redirect('bandeja')   
+            return redirect('buscar')   
 
     else:
         form = RecomendacionForm()

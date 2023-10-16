@@ -5,3 +5,4 @@ class RecomendacionForm(forms.ModelForm):
     class Meta:
         model = Recomendacion
         fields = '__all__'
+        exclude = ['observacion']
