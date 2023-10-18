@@ -43,7 +43,7 @@ class Recomendacion(models.Model):
     numero_rec      = models.IntegerField()
     recomendacion   = models.TextField()
     meta            = models.TextField()
-    plazo_cumplimiento      = models.DateTimeField(auto_now_add=True, null=True)
+    plazo_cumplimiento      = models.DateTimeField(auto_now_add=False, null=True)
     indicador_validacion    = models.CharField(max_length=255)
     acciones_meta           = models.TextField()
     recursos        = models.TextField()
