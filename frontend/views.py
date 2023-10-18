@@ -73,6 +73,7 @@ def endsession(request):
 #     })
 
 
+@login_required
 def crear_reco(request):
     if request.method == 'POST':
         form = RecomendacionForm(request.POST, request.FILES)
