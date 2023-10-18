@@ -26,7 +26,7 @@ def signup(request):
                 user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
                 user.save()
                 # usuario
-                login(request, user)
+                #login(request, user)
                 return redirect('login')
             except:
                 # return HttpResponse('el usuario ya existe')
