@@ -110,3 +110,29 @@ label {
     display: grid;
     justify-items: right;
 }
+
+.container-salir{
+    display: grid;
+    justify-items: center;
+    margin-top: 70px;
+}
+
+.footer-login{
+    width: 100%;
+    background-color: #b3142c;
+    position: fixed;
+    bottom: 0;
+}
+
+.card:hover{
+    border: 1px solid #b3142c;
+}
+
+.footer-detail{
+    margin: 0;
+    padding: 0;
+    background-color: #b3142c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}

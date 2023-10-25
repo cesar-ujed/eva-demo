@@ -116,7 +116,7 @@ class BusquedaView(ListView):
                 # Q(numero_rec__icontains=query) | Q(categoria__icontains=query)
             )
         else:
-            return Recomendacion.objects.all()
+            return Recomendacion.objects.all().order_by('id')
         
 
 def salirView(request):

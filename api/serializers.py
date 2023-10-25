@@ -27,6 +27,10 @@ class ResponsableSerializer(serializers.ModelSerializer):
 
 
 class RecomendacionSerializer(serializers.ModelSerializer):
+
+    categoria = serializers.CharField(
+        source='categoria.eje', trim_whitespace=True, required=False, allow_blank=True, allow_null=True)
+    
     class Meta:
         model = Recomendacion
         fields = '__all__'

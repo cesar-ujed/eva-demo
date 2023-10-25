@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<div class="container-sm">
+<div class="container-salir">
     <br><br>
     <div class="card" style="width: 40rem;">
         <div class="card-header">
@@ -10,10 +10,13 @@
         </div>
         <div class="card-body">
           <h5 class="card-title">{{ msg }}</h5>
-          <a href="{% url 'logout' %}" class="btn btn-danger">Salir</a>
-          <a href="{% url 'buscar' %}" class="btn btn-primary">Cancelar</a>
+          <a href="{% url 'logout' %}" class="btn btn-outline-danger">Salir</a>
+          <a href="{% url 'buscar' %}" class="btn btn-outline-secondary">Cancelar</a>
         </div>
       </div>
 </div>
+<footer class="footer-login">
+  <p>Powered by Subsecretaría General Académica.  ♡</p>
+</footer>
 
 {% endblock %}
