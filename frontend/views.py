@@ -112,7 +112,7 @@ class BusquedaView(ListView):
         query = self.request.GET.get('q')
         if query:
             return Recomendacion.objects.filter(
-                categoria__nombre_cat__icontains=query
+                responsable__area_resp__icontains=query
                 # Q(numero_rec__icontains=query) | Q(categoria__icontains=query)
             )
         else:
