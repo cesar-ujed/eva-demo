@@ -10,11 +10,11 @@
         </div>
     </div>
     <div class="grid-content-search" style="display: grid; justify-items: right;">
-        <form method="GET">
-            <input type="text" name="q" placeholder="Buscar por área">
-            <button type="submit">Buscar</button>
+        <form class="d-flex" role="search" method="GET">
+            <input class="form-control me-2" name="q" type="search" placeholder="Buscar por área" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Buscar</button>
         </form>
-    </div>
+    </div> 
 </div>
 
 <div class="container">
@@ -30,8 +30,11 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><label for="" style="font-weight: bold;">Eje:</label> {{ resultado.categoria.eje }}</li>
-                                <li class="list-group-item"><label for="" style="font-weight: bold;">Categoría:</label> {{ resultado.categoria }}</li>
-                                <li class="list-group-item"><label for="" style="font-weight: bold;">Recomendación:</label> {{ resultado.recomendacion|slice:":70" }}</li>
+                                {% comment %} <li class="list-group-item"><label for="" style="font-weight: bold;">Categoría:</label> {{ resultado.categoria }}</li> {% endcomment %}
+                                <li class="list-group-item" style="text-align: justify;">
+                                    <label for="" style="font-weight: bold;">Recomendación:</label> 
+                                    {{ resultado.recomendacion|slice:":60" }}
+                                </li>                                
                                 <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo:</label> {{ resultado.plazo_cumplimiento|date:"Y-m-d" }}</li>
                                 <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable:</label> {{ resultado.responsable }}</li>
                                 <li class="list-group-item"><a class="btn btn-outline-primary"  href="{% url 'detail' pk=resultado.pk %}">Detalle</a></li>
@@ -51,11 +54,36 @@
 
 <br><br>
 
-<footer class="footer-detail">
-    <div>
-      <p>Powered by Subsecretaría General Académica.♡</p>  
+<nav class="navbar navbar-expand-lg" style="background-color: #b3142c;">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/logo-ujed.png' %}" alt="Logo UJED" width="100" height="60">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Aquí puedes agregar enlaces de navegación adicionales -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">@SOMOS UJED</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </footer>
+</nav>
+
+<footer class="bottom">
+    <div class="legal">
+        <span>Universidad Juárez del Estado de Durango | Subsecretaría General Académica</span>
+    </div>
+</footer>  
 
 {% endblock %}
 

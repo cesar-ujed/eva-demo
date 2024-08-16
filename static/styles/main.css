@@ -2,6 +2,10 @@ img{
     width: 100%;
 }
 
+h1{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 /* Estilo para el encabezado de la universidad */
 .university-header{
     background-color: #b3142c; /* Color de fondo de la universidad */
@@ -14,9 +18,9 @@ img{
 /* Estilo para el navbar */
 .navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    max-width: auto;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -125,7 +129,7 @@ label {
 }
 
 .card:hover{
-    border: 1px solid #b3142c;
+    border: 1px solid gray;
 }
 
 .footer-detail{
