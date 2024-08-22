@@ -65,11 +65,6 @@ h1{
     width: 150px;
 }
 
-/* Reset de estilos para el body y el footer */
-body, footer {
-    margin: 0;
-    padding: 0;
-}
 
 /* Estilos para el footer */
 footer {
@@ -79,21 +74,6 @@ footer {
     text-align: center;
 }
 
-/* Estilos para la información de contacto */
-.contacto {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.contacto h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.contacto p {
-    font-size: 16px;
-    margin: 5px 0;
-}
 
 .content-grid{
     display: grid;

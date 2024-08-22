@@ -4,16 +4,14 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django.views import View
 from api.models import Recomendacion
 from frontend.forms import RecomendacionForm
 from django.views.generic import ListView
 from django.db.models import Q
 
 # Create your views here.
-def index(request):
-    return render(request, 'index.html')
-
-
 def signup(request):
 
     if request.method == 'GET':
@@ -41,7 +39,7 @@ def signup(request):
     })
 
 
-def startsession(request):
+def index(request):
     if request.method == 'GET':
         return render(request, 'signin.html', {
             'form': AuthenticationForm
@@ -63,14 +61,7 @@ def startsession(request):
 @login_required
 def endsession(request):
     logout(request)
-    return redirect('index')
-
-
-# def bandeja(request):
-#     recomendaciones = Recomendacion.objects.all()
-#     return render(request, 'recomendaciones.html', {
-#         'recomendaciones': recomendaciones
-#     })
+    return redirect(index)
 
 
 @login_required
