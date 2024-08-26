@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views import View
 from api.models import Recomendacion
-from frontend.forms import RecomendacionForm
+from frontend.forms import RecomendacionForm, BootstrapAuthenticationForm
 from django.views.generic import ListView
 from django.db.models import Q
 
@@ -42,7 +42,7 @@ def signup(request):
 def index(request):
     if request.method == 'GET':
         return render(request, 'signin.html', {
-            'form': AuthenticationForm
+            'form': BootstrapAuthenticationForm
         })
     else:
         user = authenticate(request, username=request.POST['username'],
@@ -50,8 +50,8 @@ def index(request):
 
         if user is None:
                 return render(request, 'signin.html', {
-                'form': AuthenticationForm,
-                'error': 'username or password incorrect'
+                'form': BootstrapAuthenticationForm,
+                'error': 'usuario o contraseña incorrecto'
             })
         else:
             login(request, user)

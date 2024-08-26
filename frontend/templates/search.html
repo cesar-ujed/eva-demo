@@ -1,89 +1,88 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 {% block content %}
-<br>
 
-<div class="container">
-    <div class="grid-content-reco">
-        <div>
-            <h1>Bandeja de recomendaciones</h1>
-        </div>
-    </div>
-    <div class="grid-content-search" style="display: grid; justify-items: right;">
-        <form class="d-flex" role="search" method="GET">
-            <input class="form-control me-2" name="q" type="search" placeholder="Buscar por área" aria-label="Search">
-            <button class="btn btn-primary" type="submit">Buscar</button>
-        </form>
-    </div> 
-</div>
+<div class="content">
 
-<div class="container">
-    <div id="" class="tabcontent">
-        <section class="section mb-16">
-            <div class="fluid-container">
-                <div class="tabs__panel" >
-                    <div class="row">
-                        {% for resultado in resultados %}
-                        <div class="card" style="width: 18rem; margin: 2em;">
-                            <div class="card-header" style="font-weight: bold;">
-                                No. {{ resultado.numero_rec }}
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><label for="" style="font-weight: bold;">Eje:</label> {{ resultado.categoria.eje }}</li>
-                                {% comment %} <li class="list-group-item"><label for="" style="font-weight: bold;">Categoría:</label> {{ resultado.categoria }}</li> {% endcomment %}
-                                <li class="list-group-item" style="text-align: justify;">
-                                    <label for="" style="font-weight: bold;">Recomendación:</label> 
-                                    {{ resultado.recomendacion|slice:":60" }}
-                                </li>                                
-                                <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo:</label> {{ resultado.plazo_cumplimiento|date:"Y-m-d" }}</li>
-                                <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable:</label> {{ resultado.responsable }}</li>
-                                <li class="list-group-item"><a class="btn btn-outline-primary"  href="{% url 'detail' pk=resultado.pk %}">Detalle</a></li>
-                            </ul>
-                        </div>
-                        {% empty %}
-                            <div>
-                                <p>No se encontraron resultados, por favor revise si escribio bien la categoría deseada respetando los signos de acentuación, presione nuevamente buscar para volver.</p>
-                            </div>
-                        {% endfor %}                     
-                    </div>
-                </div>  
-            </div>  
-        </section>
-    </div>
-</div>
-
-<br><br>
-
-<nav class="navbar navbar-expand-lg" style="background-color: #b3142c;">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="{% static 'images/logo-ujed.png' %}" alt="Logo UJED" width="100" height="60">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Aquí puedes agregar enlaces de navegación adicionales -->
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">@SOMOS UJED</a>
-                </li>
-            </ul>
+        <div class="grid-content-reco">
+            <div>
+                <h1 style="color: #fff;" >Bandeja de recomendaciones</h1>
+            </div>
+        </div>
+        <div class="grid-content-search" style="display: grid; justify-items: right;">
+            <form class="d-flex" role="search" method="GET">
+                <input class="form-control me-2" name="q" type="search" placeholder="Buscar por área" aria-label="Search">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </form>
+        </div> 
+    </div>
+
+    <div class="container">
+        <div id="" class="tabcontent">
+            <section class="section mb-16">
+                <div class="fluid-container">
+                    <div class="tabs__panel" >
+                        <div class="row">
+                            {% for resultado in resultados %}
+                            <div class="card card-2" style="width: 18rem; margin: 2em;">
+                                <div class="card-header" style="font-weight: bold;">
+                                    No. {{ resultado.numero_rec }}
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><label for="" style="font-weight: bold;">Eje:</label> {{ resultado.categoria.eje }}</li>
+                                    {% comment %} <li class="list-group-item"><label for="" style="font-weight: bold;">Categoría:</label> {{ resultado.categoria }}</li> {% endcomment %}
+                                    <li class="list-group-item" style="text-align: justify;">
+                                        <label for="" style="font-weight: bold;">Recomendación:</label> 
+                                        {{ resultado.recomendacion|slice:":60" }}
+                                    </li>                                
+                                    <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo:</label> {{ resultado.plazo_cumplimiento|date:"Y-m-d" }}</li>
+                                    <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable:</label> {{ resultado.responsable }}</li>
+                                    <li class="list-group-item"><a class="btn btn-outline-primary"  href="{% url 'detail' pk=resultado.pk %}">Detalle</a></li>
+                                </ul>
+                            </div>
+                            {% empty %}
+                            <div class="tabcontent">
+                                <div class="alert alert-danger" role="alert">
+                                    No se encontraron resultados, presione nuevamente buscar para volver.
+                                  </div>
+                            </div>
+                            {% endfor %}                     
+                        </div>
+                    </div>  
+                </div>  
+            </section>
         </div>
     </div>
-</nav>
 
-<footer class="bottom">
-    <div class="legal">
-        <span>Universidad Juárez del Estado de Durango | Subsecretaría General Académica</span>
-    </div>
-</footer>  
+    <br><br>
+
+    <nav class="navbar fixed-bottom navbar-expand-lg" style="background-color: #b3142c;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/logo-ujed.png' %}" alt="Logo UJED" width="100" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Aquí puedes agregar enlaces de navegación adicionales -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"> 🡩 Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">@SOMOS UJED</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>
 
 {% endblock %}
 
