@@ -41,17 +41,21 @@ def signup(request):
 
 def index(request):
     if request.method == 'GET':
+        # Cierra la sesión si el usuario está autenticado y vuelve a la página de login
+        if request.user.is_authenticated:
+            logout(request)
+        
         return render(request, 'signin.html', {
             'form': BootstrapAuthenticationForm
         })
     else:
         user = authenticate(request, username=request.POST['username'],
-        password=request.POST['password'])
+                            password=request.POST['password'])
 
         if user is None:
-                return render(request, 'signin.html', {
+            return render(request, 'signin.html', {
                 'form': BootstrapAuthenticationForm,
-                'error': 'usuario o contraseña incorrecto'
+                'error': 'Usuario o contraseña incorrecto'
             })
         else:
             login(request, user)
@@ -94,20 +98,23 @@ def obtener_pdf(request, pdf_id):
     return response
 
 
+
 class BusquedaView(ListView):
     model = Recomendacion
-    template_name = 'search.html'  # Nombre de tu plantilla HTML
+    template_name = 'search.html'
     context_object_name = 'resultados'
 
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
+            # Asegúrate de apuntar a un campo específico de la relación ForeignKey
             return Recomendacion.objects.filter(
-                responsable__area_resp__icontains=query
-                # Q(numero_rec__icontains=query) | Q(categoria__icontains=query)
-            )
+                Q(responsable__area_resp__icontains=query) |  # Cambia 'nombre' por el campo específico
+                Q(categoria__eje__numero_eje__icontains=query)  # Cambia 'nombre' por el campo específico
+            ).order_by('id')
         else:
             return Recomendacion.objects.all().order_by('id')
+
         
 
 def salirView(request):

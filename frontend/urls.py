@@ -16,5 +16,5 @@ urlpatterns = [
     path('bandeja/detalle/<int:pk>/actualizar/',views.actualizar,       name='observacion'),
 ]
 
-if settings.DEBUG == False:
+if settings.DEBUG == True:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

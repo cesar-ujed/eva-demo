@@ -121,9 +121,12 @@ label {
 .footer-detail{
     margin: 0;
     padding: 0;
-    background-color: #b3142c;
+    background-color: #333;
     color: white;
     padding: 20px;
     text-align: center;
 }
 
+.row {
+    margin: 15px;
+}

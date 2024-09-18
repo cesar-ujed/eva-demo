@@ -5,7 +5,7 @@
 {% block content %}
 <br>
 <div class="container">
-    <h1>Editar o agregar</h1>
+    <h1 style="color: #fff";>Editar o agregar</h1>
     <br>
     <form method="post">
         {% csrf_token %}
@@ -14,7 +14,34 @@
             <textarea class="form-control" id="observacion" name="observacion" value="{{ recomendacion.observacion }}" rows="3">{{ recomendacion.observacion }}</textarea>
         </div>
         <button class="btn btn-primary" type="submit">Guardar</button>
+        <a type="button" class="btn btn-dark" href="{% url 'detail' pk=recomendacion.pk %}">Cancelar</a>
     </form>
 </div>
+<footer class="footer-login">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+          <a class="navbar-brand" href="#">
+              <img src="{% static 'images/logo-ujed.png' %}" alt="Logo UJED" width="170" height="70">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <!-- Aquí puedes agregar enlaces de navegación adicionales -->
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#" style="color: #fff;">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#" style="color: #fff;">Contacto</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#" style="color: #fff;">@SOMOS UJED</a>
+                  </li> 
+              </ul>
+          </div>
+      </div>
+    </nav>
+  </footer>
 
 {% endblock %}

@@ -4,12 +4,12 @@
 <br>
 <br>
 <div class="container">
-  <a href="{% url 'buscar' %}">🢨 Atrás</a>
+  <a class="btn btn-dark" href="{% url 'buscar' %}">🡠 Atrás</a>
 </div>
 <br>
 <div class="container">
-  <div class="card" style="width: 80rem;">
-    <div class="card-header" style="font-weight: bold; background-color: dimgrey;">
+  <div class="card" style="width: auto;">
+    <div class="card-header" style="font-weight: bold; background-color: #333; color: #fff;">
       Recomendación no. {{ recomendacion.numero_rec }}
       </div>
       <ul class="list-group list-group-flush">
@@ -23,16 +23,37 @@
         <li class="list-group-item"><label for="" style="font-weight: bold;">Recursos: </label> {{ recomendacion.recursos }}</li>
         <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable: </label> {{ recomendacion.responsable }}</li>
         <li class="list-group-item"><label for="" style="font-weight: bold;">Observación: </label> {{ recomendacion.observacion }}</li>
-        <li class="list-group-item"><a class="btn btn-primary" href="{{ recomendacion.archivo.url }}" target="_blank">Ver Evidencia</a></li>  
-        <li class="list-group-item"><a class="btn btn-primary"  href="{% url 'observacion' pk=recomendacion.pk %}">Agregar o editar observación</a></li>  
-      </ul>
+        <li class="list-group-item"><a class="btn btn-primary" href="{{ recomendacion.archivo.url }}" target="_blank">◎ Ver Evidencia</a></li>  
+        <li class="list-group-item"><a class="btn btn-primary"  href="{% url 'observacion' pk=recomendacion.pk %}">🖉 Agregar o editar observación</a></li>  
+      </ul> 
   </div>
 </div>
 <br><br>
 <footer class="footer-detail">
-  <div>
-    <p>Powered by Subsecretaría General Académica.♡</p>  
-  </div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/logo-ujed.png' %}" alt="Logo UJED" width="170" height="70">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Aquí puedes agregar enlaces de navegación adicionales -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" style="color: #fff;">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: #fff;">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: #fff;">@SOMOS UJED</a>
+                </li> 
+            </ul>
+        </div>
+    </div>
+  </nav>
 </footer>
 
 {% endblock %}

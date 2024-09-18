@@ -7,18 +7,23 @@
     <div class="container">
         <div class="grid-content-reco">
             <div>
+                <br>
                 <h1 style="color: #fff;" >Bandeja de recomendaciones</h1>
             </div>
         </div>
         <div class="grid-content-search" style="display: grid; justify-items: right;">
             <form class="d-flex" role="search" method="GET">
-                <input class="form-control me-2" name="q" type="search" placeholder="Buscar por área" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Buscar</button>
+                <input class="form-control me-2" name="q" type="search" placeholder="Buscar por area o eje" aria-label="Search">
+                <button class="btn btn-dark" type="submit">Buscar</button>
             </form>
         </div> 
     </div>
 
     <div class="container">
+        <br>
+        <div>
+            <a class="btn btn-secondary d-grid gap-2" href="{% url 'crear' %}">+</a>
+        </div>
         <div id="" class="tabcontent">
             <section class="section mb-16">
                 <div class="fluid-container">
@@ -38,14 +43,15 @@
                                     </li>                                
                                     <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo:</label> {{ resultado.plazo_cumplimiento|date:"Y-m-d" }}</li>
                                     <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable:</label> {{ resultado.responsable }}</li>
-                                    <li class="list-group-item"><a class="btn btn-outline-primary"  href="{% url 'detail' pk=resultado.pk %}">Detalle</a></li>
+                                    <li class="list-group-item"><a class="btn btn-outline-secondary"  href="{% url 'detail' pk=resultado.pk %}">🗎 Detalle</a></li>
                                 </ul>
                             </div>
                             {% empty %}
                             <div class="tabcontent">
+                                <br>
                                 <div class="alert alert-danger" role="alert">
-                                    No se encontraron resultados, presione nuevamente buscar para volver.
-                                  </div>
+                                    No se encontraron resultados, presione nuevamente 'Buscar' para volver.
+                                </div>
                             </div>
                             {% endfor %}                     
                         </div>
@@ -57,7 +63,7 @@
 
     <br><br>
 
-    <nav class="navbar fixed-bottom navbar-expand-lg" style="background-color: #b3142c;">
+    <nav class="navbar fixed-bottom navbar-expand-lg" style="background-color: #333;">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="{% static 'images/logo-ujed.png' %}" alt="Logo UJED" width="100" height="60">
@@ -69,13 +75,13 @@
                 <!-- Aquí puedes agregar enlaces de navegación adicionales -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"> 🡩 Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="#" style="color: #fff";> 🡩 Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link" href="#" style="color: #fff";>Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@SOMOS UJED</a>
+                        <a class="nav-link" href="#" style="color: #fff";>@SOMOS UJED</a>
                     </li>
                 </ul>
             </div>
