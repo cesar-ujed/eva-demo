@@ -9,6 +9,7 @@ router.register(r'eje_eval',        views.Eje_evalViewSet)
 router.register(r'categoria',       views.CategoriaViewSet)
 router.register(r'responsable',     views.ResponsableViewSet)
 router.register(r'recomendacion',   views.RecomendacionViewSet)
+router.register(r'archivos',        views.ArchivoCreateView)
 
 urlpatterns = [
     path('', include(router.urls))

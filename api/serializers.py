@@ -27,10 +27,19 @@ class ResponsableSerializer(serializers.ModelSerializer):
 
 
 class RecomendacionSerializer(serializers.ModelSerializer):
+    responsables = serializers.PrimaryKeyRelatedField(many=True, queryset=Responsable.objects.all())
 
-    categoria = serializers.CharField(
-        source='categoria.eje', trim_whitespace=True, required=False, allow_blank=True, allow_null=True)
-    
+    # categoria = serializers.CharField(
+    #     source='categoria.eje', trim_whitespace=True, required=False, allow_blank=True, allow_null=True)
+
     class Meta:
         model = Recomendacion
         fields = '__all__'
+
+
+class ArchivoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Archivo
+        fields = ['archivo', 'recomendacion']
+
+
