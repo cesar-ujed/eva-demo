@@ -23,8 +23,29 @@ class RecomendacionForm(forms.ModelForm):
             'indicador_validacion': forms.TextInput(attrs={'class': 'form-control'}),
             'acciones_meta': forms.Textarea(attrs={'class': 'form-control'}),
             'recursos': forms.Textarea(attrs={'class': 'form-control'}),
-            'archivo': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'responsable': forms.Select(attrs={'class': 'form-control'}),
+            'responsables': forms.CheckboxSelectMultiple(),
             'categoria': forms.Select(attrs={'class': 'form-control'}),
-            # Puedes eliminar la entrada de 'observacion' aquí si defines el campo arriba
         }
+
+
+class ArchivoUpForm(forms.ModelForm):
+    class Meta:
+        model = Archivo 
+        fields = ['archivo']   
+        widgets = {
+            'archivo': forms.FileInput(attrs={'class': 'form-control'}),
+        }   
+
+    def clean_archivo(self):
+        archivo = self.cleaned_data.get('archivo')
+
+        # Validar tipo de archivo
+        if not archivo.name.endswith('.pdf'):
+            raise forms.ValidationError('Solo se permiten archivos PDF.')
+
+        # Validar tamaño del archivo
+        limite = 5 * 1024 * 1024  # 5 MB
+        if archivo.size > limite:
+            raise forms.ValidationError('El archivo no puede exceder los 5 MB.')
+
+        return archivo

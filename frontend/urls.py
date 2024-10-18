@@ -14,6 +14,8 @@ urlpatterns = [
     path('buscar/',                             BusquedaView.as_view(), name='buscar'),
     path('salir/',                              views.salirView,        name='salir'),
     path('bandeja/detalle/<int:pk>/actualizar/',views.actualizar,       name='observacion'),
+    path('recomendacion/<int:pk>/subir_evidencia/',     views.up_archivo,           name='evidencia'),
+    path('descargar-evidencias/<int:recomendacion_pk>/', views.descargar_evidencias, name='descargar_evidencias'),
 ]
 
 if settings.DEBUG == True:

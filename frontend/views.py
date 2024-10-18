@@ -1,4 +1,6 @@
-from django.http import FileResponse
+import os
+import zipfile
+from django.http import FileResponse, HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm 
 from django.contrib.auth.models import User
@@ -6,8 +8,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views import View
-from api.models import Recomendacion
-from frontend.forms import RecomendacionForm, BootstrapAuthenticationForm
+from api.models import Recomendacion, Archivo
+from frontend.forms import RecomendacionForm, BootstrapAuthenticationForm, ArchivoUpForm
 from django.views.generic import ListView
 from django.db.models import Q
 
@@ -109,7 +111,7 @@ class BusquedaView(ListView):
         if query:
             # Asegúrate de apuntar a un campo específico de la relación ForeignKey
             return Recomendacion.objects.filter(
-                Q(responsable__area_resp__icontains=query) |  # Cambia 'nombre' por el campo específico
+                Q(responsables__area_resp__icontains=query) |  # Cambia 'nombre' por el campo específico
                 Q(categoria__eje__numero_eje__icontains=query)  # Cambia 'nombre' por el campo específico
             ).order_by('id')
         else:
@@ -136,4 +138,40 @@ def actualizar(request, pk):
         return render(request, 'observacion.html', {
             'recomendacion': recomendacion
         })
+    
+
+def up_archivo(request, pk):
+    recomendacion = get_object_or_404(Recomendacion, pk=pk)
+
+    if request.method == 'POST':
+        form = ArchivoUpForm(request.POST, request.FILES)
+        if form.is_valid():
+            archivo = form.save(commit=False)
+            archivo.recomendacion = recomendacion  # Relaciona el archivo con la recomendación
+            archivo.save()
+            return redirect('detail', pk=pk)  # Redirige a la vista de detalle
+    else:
+        form = ArchivoUpForm()
+    
+    return render(request, 'evidencia.html', {'form': form, 'recomendacion': recomendacion})
+
+
+def descargar_evidencias(request, recomendacion_pk):
+    recomendacion = get_object_or_404(Recomendacion, pk=recomendacion_pk)
+    evidencias = Archivo.objects.filter(recomendacion=recomendacion)
+
+    # Crea el archivo ZIP en memoria
+    response = HttpResponse(content_type='application/zip')
+    zip_filename = f'evidencias_recomendacion_{recomendacion_pk}.zip'
+    response['Content-Disposition'] = f'attachment; filename={zip_filename}'
+
+    with zipfile.ZipFile(response, 'w') as zip_file:
+        for evidencia in evidencias:
+            evidencia_path = evidencia.archivo.path
+            # Añade el archivo al ZIP
+            zip_file.write(evidencia_path, os.path.basename(evidencia_path))
+
+    return response
+
+
     

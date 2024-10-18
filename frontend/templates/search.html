@@ -13,7 +13,7 @@
         </div>
         <div class="grid-content-search" style="display: grid; justify-items: right;">
             <form class="d-flex" role="search" method="GET">
-                <input class="form-control me-2" name="q" type="search" placeholder="Buscar por area o eje" aria-label="Search">
+                <input class="form-control me-2" name="q" type="search" placeholder="Buscar por eje y responsable" aria-label="Search">
                 <button class="btn btn-dark" type="submit">Buscar</button>
             </form>
         </div> 
@@ -42,7 +42,12 @@
                                         {{ resultado.recomendacion|slice:":60" }}
                                     </li>                                
                                     <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo:</label> {{ resultado.plazo_cumplimiento|date:"Y-m-d" }}</li>
-                                    <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable:</label> {{ resultado.responsable }}</li>
+                                    <li class="list-group-item">
+                                        <label for="" style="font-weight: bold;">Responsables: </label>  
+                                        {% for responsable in resultado.responsables.all %}
+                                          <a>{{ responsable.area_resp}}, </a>
+                                        {% endfor %}
+                                    </li>
                                     <li class="list-group-item"><a class="btn btn-outline-secondary"  href="{% url 'detail' pk=resultado.pk %}">🗎 Detalle</a></li>
                                 </ul>
                             </div>

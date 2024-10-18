@@ -1,0 +1,72 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<div class="container">
+  <a class="btn btn-dark" href="{% url 'detail' pk=recomendacion.pk %}">🡠 Atrás</a>
+</div>
+<br>
+<div class="container">
+    <div class="card text-bg-light">
+        <div class="card-header">
+          Recomendación: {{ recomendacion.numero_rec }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Cargar evidencia</h5>
+          <p class="card-text">Recomendación: {{recomendacion.recomendacion}}</p>
+        </div>
+    </div>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.archivo }}
+        <br>
+        <div class="d-grid gap-2">
+            <button class='btn btn-success' type="submit">Subir</button>
+            <br>
+        </div>
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <a>{{ field.label }}: {{ error }}</a>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <a>{{ error }}</a>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    </form>
+</div>
+<footer class="footer-login">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+          <a class="navbar-brand" href="#">
+              <img src="{% static 'images/logo-ujed.png' %}" alt="Logo UJED" width="170" height="70">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <!-- Aquí puedes agregar enlaces de navegación adicionales -->
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#" style="color: #fff;">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#" style="color: #fff;">Contacto</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#" style="color: #fff;">@SOMOS UJED</a>
+                  </li> 
+              </ul>
+          </div>
+      </div>
+    </nav>
+  </footer>
+
+{% endblock %}

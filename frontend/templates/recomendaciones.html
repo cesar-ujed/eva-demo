@@ -14,7 +14,7 @@
                           No. {{ recomendacion.numero_rec }}
                         </div>
                         <ul class="list-group list-group-flush">
-                          <li class="list-group-item"><label for="" style="font-weight: bold;">Recomendacion:</label> {{ recomendacion.recomendacion }}</li>
+                          <li class="list-group-item"><label for="" style="font-weight: bold;">Recomendación:</label> {{ recomendacion.recomendacion }}</li>
                           <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo:</label> {{ recomendacion.plazo_cumplimiento|date:"Y-m-d" }}</li>
                           <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable:</label> {{ recomendacion.responsable }}</li>
                           <li class="list-group-item"><a href="{% url 'detail' pk=recomendacion.pk %}">Detalle</a></li>

@@ -1,7 +1,12 @@
 {% extends "layouts/base.html" %}
 {% load static %}
 {% block content %}
-
+<br>
+<br>
+<div class="container">
+  <a class="btn btn-dark" href="{% url 'buscar' %}">🡠 Atrás</a>
+</div>
+<br>
 <div class="container">
     <div>
         <br>
@@ -11,9 +16,11 @@
     <form action="" method="post" enctype="multipart/form-data" class="form-control">
         {% csrf_token %}    
         {{ form.as_p }}
-        <button class="btn btn-success d-grid gap-2" type="submit">Crear</button>
+        <div class="d-grid gap-2">
+            <button class="btn btn-success d-grid gap-2" type="submit">Crear</button>
+        </div>
         <br>
-        <a class="btn btn-secondary d-grid gap-2" href="{% url 'buscar' %}">Cancelar</a>
+        <button class="btn btn-secondary d-grid gap-2" type="reset">Vaciar formulario</button>
     </form>
 </div>
 <br>

@@ -20,11 +20,24 @@
         <li class="list-group-item"><label for="" style="font-weight: bold;">Plazo: </label> {{ recomendacion.plazo_cumplimiento|date:"Y-m-d" }}</li>
         <li class="list-group-item"><label for="" style="font-weight: bold;">Indicador: </label> {{ recomendacion.indicador_validacion }}</li>
         <li class="list-group-item"><label for="" style="font-weight: bold;">Acciones</label> {{ recomendacion.acciones_meta }}</li>
-        <li class="list-group-item"><label for="" style="font-weight: bold;">Recursos: </label> {{ recomendacion.recursos }}</li>
-        <li class="list-group-item"><label for="" style="font-weight: bold;">Responsable: </label> {{ recomendacion.responsable }}</li>
+        <li class="list-group-item"><label for="" style="font-weight: bold;">Recursos: </label> {{ recomendacion.recursos }}</li>       
+        <li class="list-group-item">
+          <label for="" style="font-weight: bold;">Responsables: </label>  
+          {% for responsable in recomendacion.responsables.all %}
+            <a>{{ responsable.area_resp}}, </a>
+          {% endfor %}
+        </li>
         <li class="list-group-item"><label for="" style="font-weight: bold;">Observación: </label> {{ recomendacion.observacion }}</li>
-        <li class="list-group-item"><a class="btn btn-primary" href="{{ recomendacion.archivo.url }}" target="_blank">◎ Ver Evidencia</a></li>  
-        <li class="list-group-item"><a class="btn btn-primary"  href="{% url 'observacion' pk=recomendacion.pk %}">🖉 Agregar o editar observación</a></li>  
+        <li class="list-group-item">
+          {% for archivo in recomendacion.archivos.all %}
+              <a class="btn btn-link" href="{{ archivo.archivo.url }}" target="_blank">{{ archivo.archivo.name }}</a>
+          {% empty %}   
+              <li class="list-group-item" style="font-weight: bold; color: #990000">Sin evidencias</li>    
+          {% endfor %}
+        </li>
+        <li class="list-group-item"><a class="btn btn-primary"  href="{% url 'evidencia' pk=recomendacion.pk %}">🡑 Subir evidencia</a><label for="">Nombre Sugerido: E1_C2_R1_nombre_archivo</label></li>    
+        <li class="list-group-item"><a class="btn btn-primary"  href="{% url 'observacion' pk=recomendacion.pk %}">🖉 Agregar o editar observación</a></li> 
+        <li class="list-group-item"><a href="{% url 'descargar_evidencias' recomendacion.pk %}" class="btn btn-primary">🡓 Descargar evidencias</a> 
       </ul> 
   </div>
 </div>
