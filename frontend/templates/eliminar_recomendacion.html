@@ -1,0 +1,36 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-salir">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="card">
+      <div class="card-header">
+        Eliminar
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Eliminar permanentemente</h5>
+        <p class="card-text">¿Estas seguro de eliminar esta recomendación?</p>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a class="btn btn-secondary" href="{% url 'detail' pk=recomendacion.pk %}">Cancelar</a>
+      </div>
+    </div>
+  </form>
+</div>
+<footer class="footer-login">
+  <p>Powered by Subsecretaría General Académica.  ♡</p>
+</footer>
+
+{% endblock %}
+
+        <!-- <div class="container-salir">
+            <h2>¿Estás seguro de que deseas eliminar esta recomendación?</h2>
+            <p>{{ object.recomendacion }}</p>
+            
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Eliminar</button>
+                <a href="{% url 'detail' pk=recomendacion.pk %}">Cancelar</a>
+            </form>
+        </div> -->

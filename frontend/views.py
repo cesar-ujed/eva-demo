@@ -6,11 +6,11 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
 from api.models import Recomendacion, Archivo
 from frontend.forms import RecomendacionForm, BootstrapAuthenticationForm, ArchivoUpForm
-from django.views.generic import ListView
+from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 
 # Create your views here.
@@ -174,4 +174,12 @@ def descargar_evidencias(request, recomendacion_pk):
     return response
 
 
-    
+class RecomendacionDeleteView(DeleteView):
+    model = Recomendacion
+    template_name = 'eliminar_recomendacion.html'  # Plantilla de confirmación de eliminación
+    success_url = reverse_lazy('buscar')  # Redirige después de la eliminación
+
+    def get_object(self, queryset=None):
+        """Método para obtener la recomendación que se eliminará."""
+        obj = super().get_object(queryset=queryset)
+        return obj    

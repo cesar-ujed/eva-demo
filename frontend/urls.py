@@ -2,7 +2,7 @@ from django.urls import path
 from frontend import views
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import BusquedaView
+from .views import BusquedaView, RecomendacionDeleteView
 
 urlpatterns = [
     path('',                                    views.index,            name='index'),
@@ -16,6 +16,7 @@ urlpatterns = [
     path('bandeja/detalle/<int:pk>/actualizar/',views.actualizar,       name='observacion'),
     path('recomendacion/<int:pk>/subir_evidencia/',     views.up_archivo,           name='evidencia'),
     path('descargar-evidencias/<int:recomendacion_pk>/', views.descargar_evidencias, name='descargar_evidencias'),
+    path('recomendacion/eliminar/<int:pk>/', RecomendacionDeleteView.as_view(), name='eliminar_recomendacion'),
 ]
 
 if settings.DEBUG == True:
