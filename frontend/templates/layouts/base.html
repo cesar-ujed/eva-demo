@@ -32,7 +32,7 @@
             </div>
             {% if user.is_authenticated %}
             <ul class="nav-links">
-                <li><a href=""></a>{{ user.username }}</li>
+                <li><a href=""></a>Bienveni@ {{ user.username }}</li>
                 <li><a href="{% url 'salir' %}">Cerrar sesión</a></li>
             </ul>
             {% else %}

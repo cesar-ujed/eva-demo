@@ -16,10 +16,10 @@ class RecomendacionForm(forms.ModelForm):
         model = Recomendacion
         fields = '__all__'
         widgets = {
-            'numero_rec': forms.NumberInput(attrs={'class': 'form-control'}),
+            'numero_rec': forms.NumberInput(attrs={'class': 'form-control', 'autofocus': 'True'}),
             'recomendacion': forms.Textarea(attrs={'class': 'form-control'}),
             'meta': forms.Textarea(attrs={'class': 'form-control'}),
-            'plazo_cumplimiento': forms.DateTimeInput(attrs={'class': 'form-control'}),
+            'plazo_cumplimiento': forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'YYYY-MM-DD'}),
             'indicador_validacion': forms.TextInput(attrs={'class': 'form-control'}),
             'acciones_meta': forms.Textarea(attrs={'class': 'form-control'}),
             'recursos': forms.Textarea(attrs={'class': 'form-control'}),
